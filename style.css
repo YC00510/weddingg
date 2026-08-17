@@ -1,0 +1,529 @@
+body {
+  margin: 0;
+  background: #e6dddd;
+  color: #ffffff00;
+ font-family: 'Noto Serif TC', serif;
+ letter-spacing: 1px;  /* 讓字跟字之間稍微拉開一點點，看起來更優雅呼吸 */
+  line-height: 1.6;     /* 讓每一行的高度增加，閱讀起來不擁擠 */
+}
+
+
+/*  MUSIC BTN  */
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+}
+.music-btn img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/*  OPENING  */
+.opening {
+  position: fixed;
+  inset: 0;
+  background: #e6dddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+.opening.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.envelope-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.envelope-image {
+  width: 120px;
+  transition: .4s;
+}
+.envelope-image:hover {
+  transform: scale(1.05);
+}
+.invite-text {
+  margin-top: 20px;
+  letter-spacing: 4px;
+}
+
+
+/* =========================================
+   Hero Setup 
+   ========================================= */
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #928989;
+}
+
+/*  VIDEO  */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+
+/*  Global HERO CONTENT  */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+  justify-content: center;
+  padding: 0 20px; 
+}
+
+/* Gallery  */
+.section,
+.card {
+  padding: 140px 20px;
+  text-align: center;
+}
+
+.reveal-wrapper {
+  background: transparent !important; 
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.card {
+  background: #e6dddd;
+  margin: 40px 20px;
+  border-radius: 16px;
+}
+
+
+.rsvp {
+  position: relative;
+  overflow: hidden;
+  color: #e6dddd;
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+}
+
+
+
+.rsvp::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: url("./images/DSC_0229.JPG") center/cover no-repeat;
+  background-size:80%; 
+  background-position: center;
+
+  opacity: 0.5; 
+  filter: blur(2px) brightness(0.8);
+
+  transform: scale(1.05);
+   z-index: 0;
+}
+  .rsvp::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(241, 237, 237, 0.25);
+}
+.rsvp * {
+  position: relative;
+  z-index: 2;
+}
+
+
+.click-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/*  REVEAL effect base  */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1.2s ease;
+  
+}
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+  color: rgb(114, 105, 57);
+  
+}
+
+/* REVEAL video */
+.reveal video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 1000px; 
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .hero-video {
+    object-fit: cover;
+    object-position: 50% 30%;
+  }
+
+}
+  
+
+  /* 手機版遮罩 */
+  .overlay {
+    background: rgba(136, 132, 132, 0.2); 
+  }
+
+  
+  .reveal video {
+    width: 90vw; 
+    max-height: 40vh; 
+    object-fit: contain;
+  }
+
+
+
+@media (min-width: 992px) {
+  
+  .hero {
+    justify-content: flex-end;
+    padding-right: 8%; 
+  }
+
+
+  .hero-content {
+    align-items: flex-end; 
+    text-align: right; 
+  }
+}
+
+/* 婚紗本 */
+/* 標題 */
+.album-title {
+  text-align: center;      /* 客觀排版邏輯：強制文字在容器內置中對齊 */
+  margin-bottom: 5px;     /* 往下推 30px，跟相本保持優雅的呼吸空間 */
+  
+  /* 質感設定 */
+  font-size: 24px;         /* 字體大小 */
+  color: #4d4949;             /* 柔和的深灰色，不會太刺眼 */
+  letter-spacing: 3px;     /* 字距拉開，看起來更有雜誌的高級感 */
+  font-weight: normal;     /* 避免字體過粗破壞浪漫感 */
+  
+}
+
+/* 翻頁提示 */
+.flip-hint {
+  font-size: 13px;         /* 字體要夠小才精緻 */
+  color: rgba(150, 150, 150, 0.8); /* 半透明的灰色，不搶走照片風采 */
+  letter-spacing: 1.5px;
+  
+  /* 🌟 關鍵間距：往下推 25px，把原本標題的空間補回來，跟相本保持距離 */
+  margin-bottom: 25px;     
+  
+  animation: pulse-text 2.5s infinite ease-in-out; 
+}
+
+/* 文字的呼吸動畫時間軸 */
+@keyframes pulse-text {
+  0%, 100% { opacity: 0.4; } /* 最暗的時候剩下 40% 亮度 */
+  50% { opacity: 1; }        /* 最亮的時候 100% 清晰 */
+}
+
+.book-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  perspective: 1500px; 
+  width: 100%;
+}
+
+/* 封面的半透明文字設定 */
+.cover-text {
+  position: absolute;
+  top: 50%;          
+  left: 50%;         
+  transform: translate(-50%, -50%); 
+  
+  background-color: rgba(255, 255, 255, 0.3); 
+  padding: 15px 30px; 
+  border-radius: 10px; 
+  text-align: center; 
+  color: #555;       
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  pointer-events: none; 
+}
+
+.cover-text h2 {
+  margin: 0 0 10px 0; 
+  font-size: 24px;
+}
+/* 婚紗本 */
+.book {
+  position: relative;
+  width: 160px;  
+  height: 220px; 
+  transform-style: preserve-3d; 
+  transition: transform 0.8s ease-in-out;
+}
+
+.book.open {
+  transform: translateX(50%);
+}
+
+.book.closed-back {
+  transform: translateX(100%);
+}
+
+/* 每一頁的通用設定 */
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: left center; 
+  transition: transform 0.8s ease-in-out; 
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* 頁面的正面與背面 */
+.page-front, .page-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; 
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-front img, .page-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 圖片自動填滿 */
+}
+
+/* 背面預先水平翻轉 */
+.page-back {
+  transform: rotateY(180deg);
+}
+
+/* 翻頁過後的狀態 */
+.page.flipped {
+  transform: rotateY(-180deg);
+}
+
+/* 跨頁 */
+.spread-left, .spread-right {
+  position: absolute;
+  width: 200% !important;  
+  height: 100% !important;
+  max-width: none;         
+  object-fit: cover;
+  top: 0;
+}
+
+.spread-left {
+  left: 0;
+}
+
+.spread-right {
+  right: 0;
+}
+
+/* 電腦版大小設定 */
+@media (min-width: 768px) {
+  .book {
+    width: 450px;
+    height: 600px;
+  }
+}
+
+/* 固定在右下角，內容垂直置中對齊 */
+.scroll-guide {
+  position: fixed;
+  bottom: 25px;
+  right: 80px;
+  z-index: 9999;
+  
+  /* Flexbox 垂直排版 */
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  
+   opacity: 0;           
+   pointer-events: none; 
+   transition: opacity 1.5s ease-in-out; 
+
+  cursor: pointer;
+  animation: bounce 2s infinite; 
+}
+
+.scroll-guide.is-active {
+  opacity: 1!important;             
+  pointer-events: auto;   /* 恢復點擊功能 */
+}
+
+
+/* 滑動箭頭的字 */
+.scroll-text {
+  font-size: 12px;
+  color: rgba(85, 83, 83, 0.877);
+  margin: 0 0 5px 0; 
+  letter-spacing: 2px; 
+}
+
+
+.chevron {
+  width: 15px;  
+  height: 15px;
+  border-bottom: 3px solid rgba(122, 116, 116, 0.815);
+  border-right: 3px solid rgba(58, 54, 54, 0.815);
+  transform: rotate(45deg);
+}
+
+.scroll-guide .chevron:nth-child(3) {
+  margin-top: -8px; 
+}
+
+/* 🌟 5. 呼吸彈跳動畫 */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+
+/* 音樂提示氣泡 */
+.music-tooltip {
+  position: fixed;
+  top: 70px;     
+  right: 15px;   
+  
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.473);
+  color: #666;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  
+  /* 預設隱形與過場動畫 */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px); 
+  transition: all 0.6s ease-out;
+}
+
+/* 指向上方的小三角形(音樂指示用) */
+.music-tooltip::after {
+  content: '';
+  position: absolute;
+  top: -10px;       
+  right: 15px;    
+  
+  /* 音樂提示氣泡的三角形 */
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent rgb(255, 255, 255, 0.473) transparent;
+}
+
+/* 氣泡浮現 */
+.music-tooltip.is-active {
+  opacity: 1;
+  transform: translateY(0); 
+}
+
+/* 無邊框去背人像 */
+.dance-icon {
+  position: absolute;
+  bottom: 0;
+  
+  
+  height: 45px; 
+  width: auto;  
+  
+  filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* 滑動新娘新郎 */
+.groom {
+  left: -45px;         /* 從容器中心往左邊推出去 */
+  animation: dance-left 1.2s infinite alternate ease-in-out;
+}
+.bride {
+  right: -45px;        /* 從容器中心往右邊推出去 */
+  animation: dance-right 1.2s infinite alternate ease-in-out;
+}
+
+/*  跳舞動畫時間軸 */
+@keyframes dance-left {
+  0% { transform: translateY(0) rotate(-15deg); }
+  100% { transform: translateY(-6px) rotate(5deg); }
+}
+
+@keyframes dance-right {
+  0% { transform: translateY(-6px) rotate(15deg); }
+  100% { transform: translateY(0) rotate(-5deg); }
+}
